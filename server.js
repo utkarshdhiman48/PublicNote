@@ -66,7 +66,7 @@ app.delete("/:id", async (req, res)=>{
 
 })
 
-mongoose.connect(process.env.dbLinkDev, {
+mongoose.connect(process.env.DBName, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(()=>{
