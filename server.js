@@ -10,16 +10,16 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 
-app.get("/page", async (req, res)=>{
+app.get("/", async (req, res)=>{
   let notes = await Note.find({}).sort({_id: 1});
   res.render("index.ejs", {notes: notes});
 });
 
-app.get("/", async (req, res)=>{
-  let notes = await Note.find({}).sort({_id: 1});
-  // res.render("index.ejs", {notes: notes});
-  res.send(notes);
-});
+// app.get("/page", async (req, res)=>{
+//   let notes = await Note.find({}).sort({_id: 1});
+//   // res.render("index.ejs", {notes: notes});
+//   res.send(notes);
+// });
 
 app.post("/", async (req,res)=>{
 
