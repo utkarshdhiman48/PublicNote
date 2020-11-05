@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 body{
   margin: 0;
@@ -90,24 +91,106 @@ div.n-note{
   border-radius: 12px;
   padding: 1.2rem;
   box-shadow: 0 0 5px 0px rgba(0,0,0,0.2);
+  position: relative;
 }
 div.n-note:hover{
   opacity: 1;
 }
-span.n-heading{
+.dots3{
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin: 1px;
+}
+.edit-3dot-icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 16px;
+  padding: 0.5rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  opacity: 0.8;
+}
+.hidden-menu{
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  border-radius: 5px;
+  background-color: #ddd;
+}
+.hidden-menu-elements{
+  padding: 0.25rem;
+  cursor: pointer;
+  color: black;
+}
+
+.n-heading, .n-text, .n-author{
+  width: calc(100% - 0.5rem);
+  border: none;
+  color: inherit;
+  border-radius: 5px;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+.n-heading{
+  display: block;
   font-size: 1.5rem;
   font-weight: bold;
-  display: block;
 }
-p.n-text{
+.n-text{
   display: block;
   font-size: 1.2rem;
+  resize: none;
 }
-span.n-author{
+.n-author{
   display: block;
   font-size: 0.8rem;
   opacity: 0.7;
 }
+
+article.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.2);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.edit-heading, .edit-text, .edit-author{
+  width: calc(100% - 0.5rem);
+  display: block;
+  background-color: rgba(255,255,255,0.2);
+  border: none;
+  color: inherit;
+  border-radius: 5px;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+.edit-buttons-parent{
+  display: flex;
+  justify-content: space-evenly;
+}
+.edit-button{
+  text-align: center;
+  flex: 1;
+  cursor: pointer;
+  background-color: #24f;
+  max-width: 150px;
+  margin: 0.5rem;
+  padding: 0.25rem;
+}
+
 
 section.free{
   position: fixed;
@@ -138,4 +221,75 @@ div.add > span:hover{
   h1.page-head{
     font-size: 1.8rem;
   }
+}
+
+.hide{
+  display: none !important;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  width: inherit;
+  height: inherit;
+  transform: translate(-50%, -50%);
+  /* right: 0;
+  bottom: 0; */
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  top: 50%;
+  left: 1rem;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translate(50%, -50%);
+  /* alternatively
+  left: 2rem; */
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
