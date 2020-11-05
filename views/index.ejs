@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Group Goals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
   </head>
 <body>
@@ -15,12 +16,12 @@
   
   <main>    
     <div class="saved">
-      <% for(let i=0; i<notes.length; i++){ %>
+      <% for(let i=notes.length-1; i>=0; i--){ %>
         <div class="n-note" data-notenumber="<%=i%>">
           <span class="n-heading">
             <%=notes[i].heading%>
           </span>
-          <hr style="height: 1px; border: none; background-color: white;">
+          <hr>
           <span class="n-text"><%=notes[i].text%></span>
           <span class="n-author"><%=notes[i].author%></span>
           <aside class="edit-3dot-icon">
@@ -45,11 +46,11 @@
     </div>
   </section>
   <article class="modal hide">
-    <div>
-      <input size="1" name="heading" class="edit-heading" value="">
-      <hr style="height: 1px; border: none; background-color: white;">
-      <textarea name="text" class="edit-text"></textarea>
-      <input size="1" name="author" class="edit-author" value="">
+    <div class="edit-inputs-parent">
+      <input placeholder="Heading" size="1" name="heading" class="edit-heading" value="">
+      <hr>
+      <textarea placeholder="Text" required name="text" class="edit-text"></textarea>
+      <input placeholder="Author" size="1" required name="author" class="edit-author" value="">
       <div class="edit-buttons-parent">
         <div class="edit-button" id="save">Save</div>
         <div class="edit-button" id="cancel">Cancel</div>
@@ -57,7 +58,7 @@
     </div>
   </article>
   <footer>
-
+    <span>by <a href="http://utkarshdhiman.xyz">Utkarsh Dhiman</a></span>
   </footer>
   <script src="/script.js"></script>
 </body>
