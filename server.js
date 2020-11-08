@@ -23,11 +23,13 @@ app.get("/", async (req, res)=>{
 
 app.post("/", async (req,res)=>{
 
-  let counted = await Note.countDocuments({});
+  let counted = (await Note.findOne({}).sort({"_id": -1}))._id+1;
+
   let note = new Note({
     heading: req.body.heading,
     text: req.body.text,
     author: req.body.author,
+    color: req.body.color || 0,
     _id: counted
   });
   
@@ -42,13 +44,21 @@ app.post("/", async (req,res)=>{
 
 app.put("/:id", async (req,res)=>{
   try{
+    let obj = {
+      heading: req.body.heading,
+      text: req.body.text,
+      author: req.body.author,
+      color: parseInt(req.body.color)
+    };
+
+    if(parseInt(obj.color)===null) {
+      delete obj.color;
+    }
+    console.log(obj);
+
     let result = await Note.updateOne({
       _id: req.params.id
-    }, {
-        heading: req.body.heading,
-        text: req.body.text,
-        author: req.body.author
-    });
+    }, obj);
     res.send(result);
   }catch(e){
     console.error(e);

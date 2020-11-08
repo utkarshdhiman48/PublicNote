@@ -17,7 +17,7 @@
   <main>    
     <div class="saved">
       <% for(let i=notes.length-1; i>=0; i--){ %>
-        <div class="n-note" data-notenumber="<%=i%>">
+        <div class="n-note bg<%=notes[i].color || 0%>" data-notenumber="<%=notes[i]._id%>">
           <span class="n-heading">
             <%=notes[i].heading%>
           </span>
@@ -46,11 +46,21 @@
     </div>
   </section>
   <article class="modal hide">
-    <div class="edit-inputs-parent">
+    <div class="edit-inputs-parent bg0">
       <input placeholder="Heading" size="1" name="heading" class="edit-heading" value="">
       <hr>
       <textarea placeholder="Text" required name="text" class="edit-text"></textarea>
       <input placeholder="Author" size="1" required name="author" class="edit-author" value="">
+      <div class="edit-color-parent">
+        <%for(let i=0; i<=8; i++){
+          if(i===0){
+          %>
+            <label class="colors" for="bgColor<%=i%>"><input id="bgColor<%=i%>" checked class="edit-color" type="radio" value=<%=i%> name="color"><div class="bg<%=i%>"></div></label>
+          <%} else {%>
+            <label class="colors" for="bgColor<%=i%>"><input id="bgColor<%=i%>" class="edit-color" type="radio" value=<%=i%> name="color"><div class="bg<%=i%>"></div></label>
+          <%}%>
+        <%}%>
+      </div>
       <div class="edit-buttons-parent">
         <div class="edit-button" id="save">Save</div>
         <div class="edit-button" id="cancel">Cancel</div>

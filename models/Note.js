@@ -4,6 +4,10 @@ const notesSchema = new mongoose.Schema({
   heading: String,
   text: String,
   author: String,
+  color: {
+    type: Number,
+    default: 0
+  },
   _id: Number
 });
 

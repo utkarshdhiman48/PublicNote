@@ -1,8 +1,8 @@
 :root{
-  --basicBg: linear-gradient(90deg, rgb(0, 128, 255), #24f);
-  --basicBorder:  1px solid rgb(131, 193, 255);
-
+  --basicBorder:  1px solid rgb(246, 250, 255);
 }
+
+
 *{
   box-sizing: border-box;
   /* border: 1px solid red; */
@@ -19,7 +19,7 @@ body{
 hr{
   height: 1px;
   border: none;
-  background-color: rgb(131, 193, 255);
+  background-color: rgb(246, 250, 255);
 }
 
 header, footer{
@@ -48,8 +48,7 @@ h1.page-head{
   margin: 0;
 }
 main{
-  margin: auto;
-  margin-top: 10rem;
+  margin: 10rem auto;
   width: 80%;
 }
 
@@ -113,7 +112,7 @@ textarea#n-text{
 
 div.n-note{
   opacity: 0.9;
-  background: var(--basicBg);
+  /* background: var(--noBg); */
   margin: 0.6rem;
   border: var(--basicBorder);
   border-radius: 12px;
@@ -230,7 +229,6 @@ article.modal{
   background-color: rgb(243, 83, 96);
 }
 .edit-inputs-parent{
-  background-image: var(--basicBg);
   border: var(--basicBorder);
   border-radius: 5px;
   padding: 1rem;
@@ -238,6 +236,24 @@ article.modal{
   min-width: 360px;
   max-width: 540px;
 }
+.colors > div{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+.edit-color{
+  display: none;
+}
+.edit-color:checked + div{
+  border: 2px solid white;
+}
+
+.edit-color-parent{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 
 section.free{
   position: fixed;
@@ -285,4 +301,31 @@ div.add > span:hover{
 
 .hide{
   display: none !important;
+}
+.bg0{
+  background-image: linear-gradient(90deg, #333, #222);
+}
+.bg1{
+  background-image: linear-gradient(90deg, rgb(0, 128, 255), #24f);
+}
+.bg2{
+  background-image:  linear-gradient(90deg, rgb(59, 183, 143), rgb(11, 171, 100));
+}
+.bg3{
+  background-image:  linear-gradient(90deg, rgb(243, 86, 96), rgb(255, 36, 70));
+}
+.bg4{
+  background-image: linear-gradient(90deg, rgb(236, 159, 5),rgb(255, 78, 0));
+}
+.bg5{
+  background-image: linear-gradient(90deg, rgb(233, 97, 150),rgb(232, 37, 181));
+}
+.bg6{
+  background-image: linear-gradient(90deg,rgb(21, 219, 143), rgb(12, 182, 139));
+}
+.bg7{
+  background-image: linear-gradient(90deg,rgb(132, 194, 16), rgb(15, 214, 79));
+}
+.bg8{
+  background-image: linear-gradient(90deg,rgb(203, 33, 142),rgb(102, 23, 203));
 }

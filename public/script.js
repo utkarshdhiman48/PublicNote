@@ -29,12 +29,18 @@ document.querySelectorAll(".hidden-menu").forEach(menu=>{
   menu.addEventListener("click", (e)=>{
     let self = e.target;
     let array = [...self.parentElement.parentElement.parentElement.children];
+    array.push(parseInt(self.parentElement.parentElement.parentElement.className.match(/\d/ig)[0]));
+    console.log(array);
     if(self.innerHTML==="Edit"){//when edit is selected
       //edit logic
       modal.classList.remove("hide");
       modal.querySelector(".edit-heading").value=array[0].innerHTML.trim();
       modal.querySelector(".edit-text").innerHTML=array[2].innerHTML.trim();
       modal.querySelector(".edit-author").value=array[3].innerHTML.trim();
+      modal.querySelectorAll(".edit-color").forEach((i)=>{
+        if(i.value==array[5]) i.checked=true;
+      });
+
       put={
         val: true,
         id: parseInt(array[0].parentElement.dataset["notenumber"])
@@ -66,8 +72,12 @@ document.querySelector("#save").addEventListener("click",()=>{
   let obj = {
     heading: modal.querySelector(".edit-heading").value,
     text: modal.querySelector(".edit-text").value,
-    author: modal.querySelector(".edit-author").value
-  }
+    author: modal.querySelector(".edit-author").value,
+    color: [...modal.querySelectorAll("input[name=color]")].find((c)=>{
+      return c.checked===true;
+    }).value || 0
+  };
+
   let res;
   if(put.val){
     // put logic
@@ -86,6 +96,7 @@ document.querySelector("#save").addEventListener("click",()=>{
 //add note
 document.querySelector("div.add").addEventListener("click", ()=>{
   nullify.bind(put)();
+  modal.querySelector("input[name=color]").checked=true;
   displayToggle(modal);
 })
 
