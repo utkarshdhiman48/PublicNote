@@ -15,15 +15,15 @@ app.get("/", async (req, res)=>{
   res.render("index.ejs", {notes: notes});
 });
 
-// app.get("/page", async (req, res)=>{
-//   let notes = await Note.find({}).sort({_id: 1});
-//   // res.render("index.ejs", {notes: notes});
-//   res.send(notes);
-// });
+app.get("/ajax", async (req, res)=>{
+  let notes = await Note.find({}).sort({_id: 1});
+  // res.render("index.ejs", {notes: notes});
+  res.render("get.ejs", {notes: notes});
+});
 
 app.post("/", async (req,res)=>{
 
-  let counted = (await Note.findOne({}).sort({"_id": -1}))._id+1;
+  let counted = (await Note.findOne({}).sort({"_id": -1}))._id+1 || 1;
 
   let note = new Note({
     heading: req.body.heading,
