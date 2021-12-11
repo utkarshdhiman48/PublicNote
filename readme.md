@@ -1,3 +1,3 @@
 My first full stack app
 
-[link](https://groupgoals.herokuapp.com/)
+a public note taking app, no need to sign in just make your note.

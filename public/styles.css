@@ -23,8 +23,7 @@ hr{
 }
 
 header, footer{
-  position: fixed;
-  /* width: 100%; */
+  position: static;
   backdrop-filter: blur(5px);
   background-color: #333;
   z-index: 9;
@@ -48,8 +47,9 @@ h1.page-head{
   margin: 0;
 }
 main{
-  margin: 10rem auto;
-  width: 80%;
+  margin: auto;
+  max-width: 80%;
+  min-height: 85vh;
 }
 
 form.adder{
@@ -120,6 +120,7 @@ div.n-note{
   box-shadow: 0 0 5px 0px rgba(0,0,0,0.2);
   position: relative;
   flex-basis: calc(50% - 1.2rem);
+  transition: opacity 200ms;
 }
 div.n-note:hover{
   opacity: 1;
@@ -137,6 +138,7 @@ div.n-note:hover{
   justify-content: space-around;
   align-items: center;
   min-height: 16px;
+  cursor: pointer;
   padding: 0.5rem;
   position: absolute;
   right: 0.5rem;
@@ -148,14 +150,18 @@ div.n-note:hover{
   top: 2rem;
   right: 1rem;
   background-color: #ddd;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 .hidden-menu-elements{
+  background-color: #ccc;
+  opacity: 0.7;
   padding: 0.25rem;
-  cursor: pointer;
   color: black;
+  transition: opacity 200ms;
 }
 .hidden-menu-elements:hover{
-  background-color: #ccc;
+  opacity: 1;
 }
 
 .n-heading, .n-text, .n-author{
@@ -189,8 +195,8 @@ article.modal{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.2);
-  backdrop-filter: blur(5px);
+  background-color: rgba(0,0,0,0.5);
+  /*backdrop-filter: blur(5px);*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,15 +207,17 @@ article.modal{
   width: calc(100% - 0.5rem);
   display: block;
   background-color: rgba(255,255,255,0.2);
-  border: none;
+  border: 2px solid transparent;
   outline: none;
   color: inherit;
-  border-radius: 5px;
-  padding: 0.25rem;
-  margin: 0.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0.25rem;
+  transition: border 200ms;
 }
-.edit-heading:hover, .edit-text:hover, .edit-author:hover{
-  background-color: rgba(255,255,255,0.3);
+.edit-heading:hover, .edit-text:hover, .edit-author:hover,
+.edit-heading:focus, .edit-text:focus, .edit-author:focus{
+  border-color: var(--basicBorder);
 }
 .edit-buttons-parent{
   display: flex;
@@ -219,6 +227,7 @@ article.modal{
   text-align: center;
   flex: 1;
   cursor: pointer;
+  border: 2px solid transparent;
   background-color: #d23;
   max-width: 150px;
   margin: 0.5rem;
@@ -226,7 +235,7 @@ article.modal{
   padding: 0.25rem;
 }
 .edit-button:hover{
-  background-color: rgb(243, 83, 96);
+  border-color: var(--basicBorder);
 }
 .edit-inputs-parent{
   border: var(--basicBorder);
@@ -246,7 +255,7 @@ article.modal{
 .edit-color{
   display: none;
 }
-.edit-color:checked + div{
+.edit-color:checked + div, .edit-color:hover + div{
   border: 2px solid rgb(246, 250, 255);
 }
 

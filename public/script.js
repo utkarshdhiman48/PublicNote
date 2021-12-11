@@ -31,12 +31,12 @@ document.querySelectorAll(".hidden-menu").forEach(menu=>{
     let array = [...self.parentElement.parentElement.parentElement.children];
     array.push(parseInt(self.parentElement.parentElement.parentElement.className.match(/\d/ig)[0]));
     console.log(array);
-    if(self.innerHTML==="Edit"){//when edit is selected
+    if(self.innerText==="Edit"){//when edit is selected
       //edit logic
       modal.classList.remove("hide");
-      modal.querySelector(".edit-heading").value=array[0].innerHTML.trim();
-      modal.querySelector(".edit-text").innerHTML=array[2].innerHTML.trim();
-      modal.querySelector(".edit-author").value=array[3].innerHTML.trim();
+      modal.querySelector(".edit-heading").value=array[0].innerText.trim();
+      modal.querySelector(".edit-text").innerText=array[2].innerText.trim();
+      modal.querySelector(".edit-author").value=array[3].innerText.trim();
       modal.querySelectorAll(".edit-color").forEach((i)=>{
         if(i.value==array[5]) i.checked=true;
       });
@@ -46,7 +46,7 @@ document.querySelectorAll(".hidden-menu").forEach(menu=>{
         id: parseInt(array[0].parentElement.dataset["notenumber"])
       }
     }
-    else if(e.target.innerHTML==="Delete"){//when delete is selected
+    else if(e.target.innerText==="Delete"){//when delete is selected
 //delete logic
       let temp = e.target.parentElement.parentElement.parentElement;
       let res = deleteRequest(parseInt(temp.dataset["notenumber"]));
@@ -61,7 +61,7 @@ document.querySelectorAll(".hidden-menu").forEach(menu=>{
 //hide on cancel
 modal.querySelector("#cancel").addEventListener("click", ()=>{
   modal.querySelector(".edit-heading").value="";
-  modal.querySelector(".edit-text").innerHTML="";
+  modal.querySelector(".edit-text").innerText="";
   modal.querySelector(".edit-author").value="";
   modal.classList.add("hide");
   nullify.bind(put)();
@@ -77,6 +77,8 @@ document.querySelector("#save").addEventListener("click",()=>{
       return c.checked===true;
     }).value || 0
   };
+
+  console.log(obj);
 
   let res;
   if(put.val){

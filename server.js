@@ -23,7 +23,8 @@ app.get("/ajax", async (req, res)=>{
 
 app.post("/", async (req,res)=>{
 
-  let counted = (await Note.findOne({}).sort({"_id": -1}))._id+1 || 1;
+  const counted = await Note.findOne({}).sort({"_id": -1});
+  let id = counted ? counted._id+1 : 1;
 
   let note = new Note({
     heading: req.body.heading,
