@@ -15,23 +15,14 @@ app.get("/", async (req, res)=>{
   res.render("index.ejs", {notes: notes});
 });
 
-app.get("/ajax", async (req, res)=>{
-  let notes = await Note.find({}).sort({_id: 1});
-  // res.render("index.ejs", {notes: notes});
-  res.render("get.ejs", {notes: notes});
-});
-
 app.post("/", async (req,res)=>{
 
-  const counted = await Note.findOne({}).sort({"_id": -1});
-  let id = counted ? counted._id+1 : 1;
 
   let note = new Note({
     heading: req.body.heading,
     text: req.body.text,
     author: req.body.author,
     color: req.body.color || 0,
-    _id: counted
   });
   
   try{
@@ -39,6 +30,7 @@ app.post("/", async (req,res)=>{
     res.send(result);
   }catch(e){
     console.error(e);
+    res.sendStatus(400);
   }
   // res.redirect("/");
 });
@@ -55,7 +47,6 @@ app.put("/:id", async (req,res)=>{
     if(parseInt(obj.color)===null) {
       delete obj.color;
     }
-    console.log(obj);
 
     let result = await Note.updateOne({
       _id: req.params.id
@@ -63,6 +54,7 @@ app.put("/:id", async (req,res)=>{
     res.send(result);
   }catch(e){
     console.error(e);
+    res.sendStatus(400);
   }
   // res.redirect("/");
 });
@@ -73,6 +65,7 @@ app.delete("/:id", async (req, res)=>{
     res.send(result);
   }catch(er){
     console.log(er);
+    res.sendStatus(400);
   }
 
 })

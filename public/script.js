@@ -29,8 +29,7 @@ document.querySelectorAll(".hidden-menu").forEach(menu=>{
   menu.addEventListener("click", (e)=>{
     let self = e.target;
     let array = [...self.parentElement.parentElement.parentElement.children];
-    array.push(parseInt(self.parentElement.parentElement.parentElement.className.match(/\d/ig)[0]));
-    console.log(array);
+    array.push(self.parentElement.parentElement.parentElement.className.match(/\d/ig)[0]);
     if(self.innerText==="Edit"){//when edit is selected
       //edit logic
       modal.classList.remove("hide");
@@ -43,14 +42,13 @@ document.querySelectorAll(".hidden-menu").forEach(menu=>{
 
       put={
         val: true,
-        id: parseInt(array[0].parentElement.dataset["notenumber"])
+        id: array[0].parentElement.dataset["notenumber"]
       }
     }
     else if(e.target.innerText==="Delete"){//when delete is selected
 //delete logic
       let temp = e.target.parentElement.parentElement.parentElement;
-      let res = deleteRequest(parseInt(temp.dataset["notenumber"]));
-      console.log(res);
+      let res = deleteRequest(temp.dataset["notenumber"]);
       res.then(()=>{
         temp.remove();
       }).catch(err=>console.error(err));
@@ -78,7 +76,6 @@ document.querySelector("#save").addEventListener("click",()=>{
     }).value || 0
   };
 
-  console.log(obj);
 
   let res;
   if(put.val){

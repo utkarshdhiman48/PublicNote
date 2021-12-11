@@ -8,7 +8,6 @@ const notesSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  _id: Number
 });
 
 module.exports = mongoose.model("notes", notesSchema);
