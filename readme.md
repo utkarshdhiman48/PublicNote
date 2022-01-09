@@ -1,3 +1,8 @@
-My first full stack app
+# PublicNote
 
-a public note taking app, no need to sign in just make your note.
+### Key Features
+- No signup required
+- Beautiful UI
+- Responsive Web Design
+
+A note taking application that don't require registration and is free to use. This is a fully responsive application developed in NodeJs.
